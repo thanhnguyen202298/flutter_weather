@@ -1,3 +1,5 @@
+import 'package:flutter_weather/utils/Utils.dart';
+
 /**
  * Created by Nguyễn Trung Thành on 2/20/2021.
  *
@@ -9,28 +11,29 @@ class ModelOpenWeather {
 
 class Current {
   double dt;
+  String date;
 
   int sunrise;
 
   int sunset;
 
-  double temp;
+  dynamic temp;
 
-  double feelsLike;
+  dynamic feelsLike;
 
   int pressure;
 
   int humidity;
 
-  double dewPoint;
+  dynamic dewPoint;
 
-  double uvi;
+  dynamic uvi;
 
   int clouds;
 
   int visibility;
 
-  double windSpeed;
+  dynamic windSpeed;
 
   int windDeg;
 
@@ -38,9 +41,10 @@ class Current {
 
   Current.fromJson(Map<String, dynamic> jsonMap) {
     dt = double.parse(jsonMap['dt'].toString());
+    date = timeUnix2DateTime(dt);
     sunrise = jsonMap['sunrise'];
     sunset = jsonMap['sunset'];
-    temp = double.parse(jsonMap['temp'].toString());
+    temp = jsonMap['temp'];
     feelsLike = jsonMap['feels_like'];
     pressure = jsonMap['pressure'];
     humidity = jsonMap['humidity'];
@@ -78,9 +82,9 @@ class Daily {
 
   int humidity;
 
-  double dewPoint;
+  dynamic dewPoint;
 
-  double windSpeed;
+  dynamic windSpeed;
 
   int windDeg;
 
@@ -88,18 +92,18 @@ class Daily {
 
   int clouds;
 
-  double pop;
+  dynamic pop;
 
-  double rain;
+  dynamic rain;
 
-  double uvi;
+  dynamic uvi;
 
   int visibility;
 
   Daily(json) {
     dt = double.parse(json['dt'].toString());
-    ;
-    date = json['date'];
+
+    date = timeUnix2DateTime(dt);
     sunrise = json['sunrise'];
     sunset = json['sunset'];
     temp = Temp(json['temp']);
@@ -110,11 +114,9 @@ class Daily {
     windSpeed = json['wind_speed'];
     windDeg = json['wind_deg'];
     clouds = json['clouds'];
-    pop = double.parse(json['pop'].toString());
-    ;
+    pop = json['pop'];
     rain = json['rain'];
-    uvi = double.parse(json['uvi'].toString());
-    ;
+    uvi = json['uvi'];
     visibility = json['visibility'];
     weather = [];
     int n = json['weather'].length;
@@ -126,16 +128,16 @@ class Daily {
 }
 
 class FeelsLike {
-  double day;
+  dynamic day;
 
-  double night;
+  dynamic night;
 
-  double eve;
+  dynamic eve;
 
-  double morn;
+  dynamic morn;
 
   FeelsLike(feelslike) {
-    day = feelslike['day'].toDouble();
+    day = feelslike['day'];
     night = feelslike['night'];
     eve = feelslike['eve'];
     morn = feelslike['morn'];
@@ -143,17 +145,17 @@ class FeelsLike {
 }
 
 class Temp {
-  double day;
+  dynamic day;
 
-  double min;
+  dynamic min;
 
-  double max;
+  dynamic max;
 
-  double night;
+  dynamic night;
 
-  double eve;
+  dynamic eve;
 
-  double morn;
+  dynamic morn;
 
   Temp(temp) {
     day = temp['day'];
