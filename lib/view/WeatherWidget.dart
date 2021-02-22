@@ -31,7 +31,9 @@ class WeatherWidget extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.only(left: 20),
-          child: Column(children: [
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
             Row(
               children: [
                 CaptionText(
