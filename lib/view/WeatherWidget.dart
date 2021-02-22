@@ -13,7 +13,9 @@ import 'package:flutter_weather/view/DecorMyWidget.dart';
  */
 class WeatherWidget extends StatelessWidget {
   final Daily _dateWeather;
+
   WeatherWidget(this._dateWeather);
+
   @override
   Widget build(BuildContext context) {
     final bloc = BlocProvider.of(context);
@@ -21,37 +23,76 @@ class WeatherWidget extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
-        Container(
-          decoration: CircleDecor("$IconWeatherLinkPrefix/${_dateWeather.weather[0].icon}@2x.png").build(),
+        CircleImage(
+          "",
+          color: Colors.transparent,
+          url: "$IconWeatherLinkPrefix/${_dateWeather.weather[0].icon}@2x.png",
+          radial: 40,
         ),
-        Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
+        Padding(
+          padding: EdgeInsets.only(left: 20),
+          child: Column(children: [
             Row(
               children: [
-                CaptionText("Date: ",bold: FontWeight.bold, fontsize: 14,),
-                CaptionText("${_dateWeather.date}", color: Colors.black54,bold: FontWeight.bold, fontsize: 14,),
+                CaptionText(
+                  "Date: ",
+                  bold: FontWeight.bold,
+                  fontsize: 14,
+                ),
+                CaptionText(
+                  "${_dateWeather.date}",
+                  color: Colors.black54,
+                  bold: FontWeight.bold,
+                  fontsize: 14,
+                ),
               ],
             ),
             Row(
               children: [
-                CaptionText("Presure: ",bold: FontWeight.bold, fontsize: 14,),
-                CaptionText("${_dateWeather.pressure} at", color: Colors.black54,bold: FontWeight.bold, fontsize: 14,),
+                CaptionText(
+                  "Presure: ",
+                  bold: FontWeight.bold,
+                  fontsize: 14,
+                ),
+                CaptionText(
+                  "${_dateWeather.pressure} at",
+                  color: Colors.black54,
+                  bold: FontWeight.bold,
+                  fontsize: 14,
+                ),
               ],
             ),
             Row(
               children: [
-                CaptionText("Temperature: ",bold: FontWeight.bold, fontsize: 14,),
-                CaptionText("${_dateWeather.temp.day}°C", color: Colors.black54,bold: FontWeight.bold, fontsize: 14,),
+                CaptionText(
+                  "Temperature: ",
+                  bold: FontWeight.bold,
+                  fontsize: 14,
+                ),
+                CaptionText(
+                  "${_dateWeather.temp.day}°C",
+                  color: Colors.black54,
+                  bold: FontWeight.bold,
+                  fontsize: 14,
+                ),
               ],
             ),
             Row(
               children: [
-                CaptionText("Humidity: ",bold: FontWeight.bold, fontsize: 14,),
-                CaptionText("${_dateWeather.humidity}%", color: Colors.black54,bold: FontWeight.bold, fontsize: 14,),
+                CaptionText(
+                  "Humidity: ",
+                  bold: FontWeight.bold,
+                  fontsize: 14,
+                ),
+                CaptionText(
+                  "${_dateWeather.humidity}%",
+                  color: Colors.black54,
+                  bold: FontWeight.bold,
+                  fontsize: 14,
+                ),
               ],
             ),
-          ],
+          ]),
         )
       ],
     );
