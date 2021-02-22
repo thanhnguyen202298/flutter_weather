@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/stream/Bloc.dart';
 import 'package:flutter_weather/view/BlocProvider.dart';
+import 'package:flutter_weather/view/ListDayWeather.dart';
 
 /**
  * Created by Nguyễn Trung Thành on 2/21/2021.
@@ -17,7 +18,10 @@ class WeatherApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: BlocProvider(
         bloc: _bloc,
-        child: Text("tesst")
+        child: ListDayWeather(
+          title: "list weahter info of day",
+          messageStream: _bloc.messageStream,
+        )
       ),
     );
   }

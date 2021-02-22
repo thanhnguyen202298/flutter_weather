@@ -1,4 +1,3 @@
-
 import 'package:flutter_weather/data/DataProvider.dart';
 import 'package:flutter_weather/model/ModelOpenCity.dart';
 import 'package:flutter_weather/model/ModelOpenWeather.dart';
@@ -10,25 +9,37 @@ import 'package:rxdart/rxdart.dart';
  * victo202298@gmail.com
  */
 class Bloc {
-WeatherInfo cityWeather;
-List<Result> cityList= [];
-Reposity resposity;
+  WeatherInfo cityWeather;
+  List<Result> cityList = [];
+  Reposity resposity;
 
-final _citylistSubject = PublishSubject<List<Result>>();
-final _weatherlistSubject = PublishSubject<WeatherInfo>();
+  Bloc() {
+    resposity = Reposity();
+    loadWeather("10.7715512", "106.6983801", "minute");
+  }
 
-Stream<List<Result>> get cityListStream => _citylistSubject.stream;
-Stream<WeatherInfo> get cityWeatherStream => _weatherlistSubject.stream;
+  final _citylistSubject = PublishSubject<List<Result>>();
+  final _weatherlistSubject = PublishSubject<WeatherInfo>();
+  final _messageSubject = BehaviorSubject<String>();
 
-loadDataCity(String name) async {
-  CityInfo cityInfo = await resposity.fetchCity(name);
-  cityList = cityInfo.results;
-  _citylistSubject.add(cityList);
-}
+  Stream<List<Result>> get cityListStream => _citylistSubject.stream;
 
-loadWeather(String lat, String lon, String exclude) async {
-  cityWeather = await resposity.fetchWeather(lat, lon, exclude);
-  _weatherlistSubject.add(cityWeather);
-}
+  Stream<WeatherInfo> get cityWeatherStream => _weatherlistSubject.stream;
 
+  Stream<String> get messageStream => _messageSubject.stream;
+
+  loadDataCity(String name) async {
+    CityInfo cityInfo = await resposity.fetchCity(name);
+    cityList = cityInfo.results;
+    _citylistSubject.add(cityList);
+  }
+
+  loadWeather(String lat, String lon, String exclude) async {
+    try {
+      cityWeather = await resposity.fetchWeather(lat, lon, exclude);
+      _weatherlistSubject.add(cityWeather);
+    } catch (e) {
+      _messageSubject.add(e.toString());
+    }
+  }
 }
