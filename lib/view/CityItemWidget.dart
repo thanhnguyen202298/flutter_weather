@@ -26,70 +26,71 @@ class CityItemWidget extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(left: 20),
+          child: Expanded(
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-            Row(
-              children: [
-                CaptionText(
-                  "${_cityItem.components.type}: ",
-                  bold: FontWeight.bold,
-                  fontsize: 14,
+                Row(
+                  children: [
+                    CaptionText(
+                      "${_cityItem.components.type}: ",
+                      bold: FontWeight.bold,
+                      fontsize: 14,
+                    ),
+                    CaptionText(
+                      "${_cityItem.formatted}",
+                      color: Colors.black54,
+                      bold: FontWeight.bold,
+                      fontsize: 14,
+                    ),
+                  ],
                 ),
-                CaptionText(
-                  "${_cityItem.formatted}",
-                  color: Colors.black54,
-                  bold: FontWeight.bold,
-                  fontsize: 14,
+                Row(
+                  children:
+                  [
+                    CaptionText(
+                      "State: ",
+                      bold: FontWeight.bold,
+                      fontsize: 14,
+                    ),
+                    CaptionText(
+                      "${_cityItem.components.state}, Code: ${_cityItem.components.stateCode}",
+                      color: Colors.black54,
+                      bold: FontWeight.bold,
+                      fontsize: 14,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            Row(
-              children:
-              [
-                CaptionText(
-                  "State: ",
-                  bold: FontWeight.bold,
-                  fontsize: 14,
+                Row(
+                  children: [
+                    CaptionText(
+                      "Country: ",
+                      bold: FontWeight.bold,
+                      fontsize: 14,
+                    ),
+                    CaptionText(
+                      "${_cityItem.components.country}, Code: ${_cityItem.components.countryCode}",
+                      color: Colors.black54,
+                      bold: FontWeight.bold,
+                      fontsize: 14,
+                    ),
+                  ],
                 ),
-                CaptionText(
-                  "${_cityItem.components.state}, Code: ${_cityItem.components.stateCode}",
-                  color: Colors.black54,
-                  bold: FontWeight.bold,
-                  fontsize: 14,
+                Row(
+                  children: [
+                    CaptionText(
+                      "Continent ",
+                      bold: FontWeight.bold,
+                      fontsize: 14,
+                    ),
+                    CaptionText(
+                      "${_cityItem.components.continent}",
+                      color: Colors.black54,
+                      bold: FontWeight.bold,
+                      fontsize: 14,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                CaptionText(
-                  "Country: ",
-                  bold: FontWeight.bold,
-                  fontsize: 14,
-                ),
-                CaptionText(
-                  "${_cityItem.components.country}, Code: ${_cityItem.components.countryCode}",
-                  color: Colors.black54,
-                  bold: FontWeight.bold,
-                  fontsize: 14,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                CaptionText(
-                  "Continent ",
-                  bold: FontWeight.bold,
-                  fontsize: 14,
-                ),
-                CaptionText(
-                  "${_cityItem.components.continent}",
-                  color: Colors.black54,
-                  bold: FontWeight.bold,
-                  fontsize: 14,
-                ),
-              ],
-            ),
                 Row(
                   children: [
                     CaptionText(
@@ -103,8 +104,12 @@ class CityItemWidget extends StatelessWidget {
                       fontsize: 14,
                     ),
                   ],
+                ),
+                Row(
+                  children: [Text("")],
                 )
-          ]),
+              ]),
+          )
         )
       ],
     );

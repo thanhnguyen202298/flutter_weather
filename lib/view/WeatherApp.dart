@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather/stream/Bloc.dart';
 import 'package:flutter_weather/view/BlocProvider.dart';
-import 'package:flutter_weather/view/ListCityWidget.dart';
 import 'package:flutter_weather/view/ListDayWeather.dart';
 
 /**
@@ -19,7 +18,7 @@ class WeatherApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.blue),
       home: BlocProvider(
         bloc: _bloc,
-        child: ListCityWidget(
+        child: ListDayWeather(
           title: "list weahter info of day",
           messageStream: _bloc.messageStream,
         )
