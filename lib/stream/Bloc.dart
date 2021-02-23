@@ -10,7 +10,7 @@ import 'package:rxdart/rxdart.dart';
  */
 class Bloc {
   WeatherInfo cityWeather;
-  List<Result> cityList = [];
+  List<CityItem> cityList = [];
   Reposity resposity;
 
   Bloc() {
@@ -18,11 +18,11 @@ class Bloc {
     loadWeather("10.7715512", "106.6983801", "minute");
   }
 
-  final _citylistSubject = PublishSubject<List<Result>>();
+  final _citylistSubject = PublishSubject<List<CityItem>>();
   final _weatherlistSubject = PublishSubject<WeatherInfo>();
   final _messageSubject = BehaviorSubject<String>();
 
-  Stream<List<Result>> get cityListStream => _citylistSubject.stream;
+  Stream<List<CityItem>> get cityListStream => _citylistSubject.stream;
 
   Stream<WeatherInfo> get cityWeatherStream => _weatherlistSubject.stream;
 

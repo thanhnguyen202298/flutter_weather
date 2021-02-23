@@ -37,7 +37,7 @@ class CityInfo {
   Timestamp timestamp = null;
 
   List<License> licenses = null;
-  List<Result> results = null;
+  List<CityItem> results = null;
 
   CityInfo.fromJson(Map<String, dynamic> json){
     documentation = json['documentation'];
@@ -58,7 +58,7 @@ class CityInfo {
     n = json['results'].length;
     results = [];
     for(int i =0; i < n ; i++){
-      Result ls = Result(json['results'][i]);
+      CityItem ls = CityItem(json['results'][i]);
       results.add(ls);
     }
   }
@@ -90,54 +90,54 @@ class Rate {
 
 class Components {
 
-  String iSO31661Alpha2 = null;
+  String iSO31661Alpha2 = "";
 
-  String iSO31661Alpha3 = null;
+  String iSO31661Alpha3 = "";
 
-  String category = null;
+  String category = "";
 
-  String type = null;
+  String type = "";
 
-  String city = null;
+  String city = "";
 
-  String cityDistrict = null;
+  String cityDistrict = "";
 
-  String continent = null;
+  String continent = "";
 
-  String country = null;
+  String country = "";
 
 
-  String countryCode = null;
+  String countryCode = "";
 
-  String hamlet = null;
+  String hamlet = "";
 
-  String state = null;
+  String state = "";
 
-  String stateCode = null;
+  String stateCode = "";
 
-  String county = null;
+  String county = "";
 
-  String postcode = null;
+  String postcode = "";
 
-  String quarter = null;
+  String quarter = "";
 
-  String town = null;
+  String town = "";
 
-  String residential = null;
+  String residential = "";
 
-  String stateDistrict = null;
+  String stateDistrict = "";
 
-  String village = null;
+  String village = "";
 
-  String municipality = null;
+  String municipality = "";
 
-  String neighbourhood = null;
+  String neighbourhood = "";
 
-  String road = null;
+  String road = "";
 
-  String roadType = null;
+  String roadType = "";
 
-  String region = null;
+  String region = "";
 
   Components(json){
 
@@ -145,54 +145,54 @@ class Components {
 
     iSO31661Alpha3 = json['iSO31661Alpha3'];
 
-    category = json['category'];
+    category = json['_category'] ??"";
 
-    type = json['type'];
+    type = json['_type']??"";
 
-    city = json['city'];
+    city = json['city']??"";
 
-    cityDistrict = json['cityDistrict'];
+    cityDistrict = json['city_district']??"";
 
-    continent = json['continent'];
+    continent = json['continent']??"";
 
-    country = json['country'];
+    country = json['country']??"";
 
 
-    countryCode = json['countryCode'];
+    countryCode = json['country_code']??"";
 
-    hamlet = json['hamlet'];
+    hamlet = json['hamlet']??"";
 
-    state = json['state'];
+    state = json['state']??"";
 
-    stateCode = json['stateCode'];
+    stateCode = json['state_code']??"";
 
-    county = json['county'];
+    county = json['county']??"";
 
-    postcode = json['postcode'];
+    postcode = json['postcode']??"";
 
-    quarter = json['quarter'];
+    quarter = json['quarter']??"";
 
-    town = json['town'];
+    town = json['town']??"";
 
-    residential = json['residential'];
+    residential = json['residential']??"";
 
-    stateDistrict = json['stateDistrict'];
+    stateDistrict = json['state_district']??"";
 
-    village = json['village'];
+    village = json['village']??"";
 
-    municipality = json['municipality'];
+    municipality = json['municipality']??"";
 
-    neighbourhood = json['neighbourhood'];
+    neighbourhood = json['neighbourhood']??"";
 
-    road = json['road'];
+    road = json['road']??"";
 
-    roadType = json['roadType'];
+    roadType = json['road_type']??"";
 
-    region = json['region'];
+    region = json['region']??"";
   }
 }
 
-class Result {
+class CityItem {
 
   int confidence = null;
   String formatted = null;
@@ -201,7 +201,7 @@ class Result {
   Components components = null;
   Location geometry = null;
 
-  Result(json){
+  CityItem(json){
     confidence = json['confidence'];
     formatted = json['formatted'];
 
