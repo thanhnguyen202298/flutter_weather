@@ -15,7 +15,8 @@ class Bloc {
 
   Bloc() {
     resposity = Reposity();
-    loadWeather("10.7715512", "106.6983801", "minute");
+    // loadWeather("10.7715512", "106.6983801", "minute");
+    loadDataCity("saigon");
   }
 
   final _citylistSubject = PublishSubject<List<CityItem>>();

@@ -32,7 +32,7 @@ class CityItemWidget extends StatelessWidget {
             Row(
               children: [
                 CaptionText(
-                  "${_cityItem.components.type}",
+                  "${_cityItem.components.type}: ",
                   bold: FontWeight.bold,
                   fontsize: 14,
                 ),
@@ -45,7 +45,8 @@ class CityItemWidget extends StatelessWidget {
               ],
             ),
             Row(
-              children: [
+              children:
+              [
                 CaptionText(
                   "State: ",
                   bold: FontWeight.bold,
